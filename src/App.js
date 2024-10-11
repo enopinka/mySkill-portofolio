@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Component } from "react";
+import ReactGA from "react-ga";
+import $ from "jquery";
+import Header from "./components/Header";
+import About from "./components/About";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      foo: "bar",
+      resumeData: {},
+    };
+
+    ReactGA.initialize("");
+    ReactGA.pageview(window.location.pathname);
+  }
+  getResumeData() {
+    $.ajax({
+      url: "./resumeData.json",
+      dataType: "json",
+      cache: false,
+      success: (data) => {
+        this.setState({
+          resumeData: data,
+        });
+      },
+      error: (xhr, status, err) => {
+        console.log(err);
+        alert(err);
+      },
+    });
+  }
+
+  componentDidMount() {
+    this.getResumeData();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header data={this.state.resumeData.main} />
+        <About data={this.state.resumeData.main} />
+      </div>
+    );
+  }
 }
 
 export default App;
