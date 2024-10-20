@@ -15,7 +15,24 @@
       "state": "Jawa Tengah",
       "zip": "16024"
     },
-    "resumedownload": "https://github.com/enopinka"
+    "resumedownload": "https://github.com/enopinka",
+    "social": [
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/retno-pinka-pratiwi-744244211/",
+        "className": "fa fa-linkedin"
+      },
+      {
+        "name": "instagram",
+        "url": "https://www.instagram.com/enopinka",
+        "className": "fa fa-instagram"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/enopinka",
+        "className": "fa fa-github"
+      }
+    ]
   },
   "resume": {
     "skillmessage": "Here you can create a short write-up of your skills to show off to employers",
