@@ -5,6 +5,8 @@ import $ from "jquery";
 import Header from "./components/Header";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Resume from "./components/Resume";
+import Portfolio from "./components/Portfolio";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class App extends Component {
       resumeData: {},
     };
 
-    ReactGA.initialize("");
+    ReactGA.initialize("UA-110570651-1");
     ReactGA.pageview(window.location.pathname);
   }
   getResumeData() {
@@ -43,6 +45,8 @@ class App extends Component {
       <div className="App">
         <Header data={this.state.resumeData.main} />
         <About data={this.state.resumeData.main} />
+        <Resume data={this.state.resumeData.resume} />
+        <Portfolio data={this.state.resumeData.portfolio} />
         <Contact data={this.state.resumeData.main} />
       </div>
     );
